@@ -1,10 +1,21 @@
 import React, { Component, Fragment } from 'react';
+
+import { connect } from 'react-redux';
 import { Div } from '../../components/Div';
 import Header from '../Header';
 import Filter from '../Filter';
 import DetailsView from '../DetailsView';
+import { createStructuredSelector } from 'reselect';
+import { initFetchGetData } from '../store/actions';
+import { SelectFetchedData, SelectIsDatafetching } from '../store/selector';
+import { compose } from 'redux';
 class Main extends Component {
+  componentDidMount() {
+    this.props.getData();
+  }
   render() {
+    console.log(this.props.isDataFetching);
+
     return (
       <Div>
         <Header />
@@ -14,5 +25,17 @@ class Main extends Component {
     );
   }
 }
+const mapStateToProps = createStructuredSelector({
+  isDataFetching: SelectIsDatafetching(),
+  fetchedData: SelectFetchedData(),
+});
 
-export default Main;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getData: () => {
+      dispatch(initFetchGetData());
+    },
+  };
+};
+
+export default compose(connect(mapStateToProps, mapDispatchToProps)(Main));
