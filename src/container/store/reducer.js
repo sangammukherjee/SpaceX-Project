@@ -11,11 +11,11 @@ export const initialState = fromJS({
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_DATA:
-      return state.set('isDataFetching', true);
+      return { ...state, isDataFetching: true };
     case FETCHED_DATA:
-      return state.set('fetchedData', action.data);
+      return { ...state, fetchedData: action.data };
     case DATA_FETCHED_COMPLETED:
-      return state.set('isDataFetching', false);
+      return { ...state, isDataFetching: false };
     default:
       return state;
   }

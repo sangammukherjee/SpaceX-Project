@@ -5,16 +5,14 @@ import { Div } from '../../components/Div';
 import Header from '../Header';
 import Filter from '../Filter';
 import DetailsView from '../DetailsView';
-import { createStructuredSelector } from 'reselect';
 import { initFetchGetData } from '../store/actions';
-import { SelectFetchedData, SelectIsDatafetching } from '../store/selector';
-import { compose } from 'redux';
+
 class Main extends Component {
   componentDidMount() {
     this.props.getData();
   }
   render() {
-    console.log(this.props.isDataFetching);
+    console.log(this.props);
 
     return (
       <Div>
@@ -25,11 +23,11 @@ class Main extends Component {
     );
   }
 }
-const mapStateToProps = createStructuredSelector({
-  isDataFetching: SelectIsDatafetching(),
-  fetchedData: SelectFetchedData(),
-});
 
+const mapStateToProps = (state) => ({
+  isDataFetching: state.isDataFetching,
+  fetchedData: state.fetchedData,
+});
 const mapDispatchToProps = (dispatch) => {
   return {
     getData: () => {
@@ -38,4 +36,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default compose(connect(mapStateToProps, mapDispatchToProps)(Main));
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
