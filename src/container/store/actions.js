@@ -5,9 +5,10 @@ import {
   INIT_FETCH_GET_DATA,
 } from './constants';
 
-export const initFetchGetData = () => {
+export const initFetchGetData = (filterData) => {
   return {
     type: INIT_FETCH_GET_DATA,
+    filterData
   };
 };
 export const fetchingData = () => {
