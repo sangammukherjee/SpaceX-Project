@@ -37,9 +37,13 @@ class Main extends Component {
     this.props.selectedLaunchSuccess('');
     this.props.selectedLandedSuccess('');
   };
+  handleiIsClearButtonDisable = () => {
+    return (
+      this.state.filterData && Object.keys(this.state.filterData).length > 0
+    );
+  };
   render() {
-    console.log(this.props.selectedLandedSuccessValue);
-
+    let isClearButtonDisable = !this.handleiIsClearButtonDisable();
     return (
       <Div bgColor='#eeeeee' padding='10px'>
         <Header />
@@ -54,6 +58,7 @@ class Main extends Component {
             selectedLaunchSuccessValue={this.props.selectedLaunchSuccessValue}
             selectedLandedSuccess={this.props.selectedLandedSuccess}
             selectedLandedSuccessValue={this.props.selectedLandedSuccessValue}
+            isClearButtonDisable={isClearButtonDisable}
           />
           <DetailsView
             fetchedData={this.props.fetchedData}

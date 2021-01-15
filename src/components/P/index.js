@@ -19,6 +19,8 @@ export const P = styled.p`
   }
   @media only screen and ${device.sm} {
     font-size: ${(props) => (props.smFontSize ? props.smFontSize : '')};
+    width: ${(props) => (props.smWidth ? props.smWidth : '')};
+
   }
   @media only screen and ${device.lg} {
     font-size: ${(props) => (props.lgFontSize ? props.lgFontSize : '')};

@@ -5,7 +5,7 @@ export const H1 = styled.h1`
   margin: ${(props) => (props.margin ? props.margin : '')};
   font-size: ${(props) => (props.fontSize ? props.fontSize : '')};
   flex: ${(props) => (props.flex ? props.flex : '')};
-
+  padding: ${(props) => (props.padding ? props.padding : '')};
 
   @media only screen and ${device.xs} {
     font-size: ${(props) => (props.xsFontSize ? props.xsFontSize : '')};

@@ -16,10 +16,10 @@ const Loader = styled.div`
   border-top: 2px solid grey;
   border-right: 2px solid grey;
   border-bottom: 2px solid grey;
-  border-left: 4px solid black;
+  border-left: 2px solid black;
   background: transparent;
-  width: 24px;
-  height: 24px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 `;
 

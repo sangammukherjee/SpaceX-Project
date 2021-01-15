@@ -9,30 +9,31 @@ class Filter extends Component {
     return (
       <Div
         lgWidth='15%'
-        smWidth='20%'
+        smWidth='22%'
+        smMargin='0 2% 0 0'
         lgPadding='10px'
         bgColor='#ffffff'
         lgMargin='0 20px 0 10px'
       >
-        <Div display='flex' margin='0 0 10px 0'>
-          <H1 margin='0' xsFontSize='15px' flex='1'>
+        <Div display='flex' margin='0 0 10px 0' xsPadding='20px'>
+          <H1 margin='0' xsFontSize='18px' flex='1'>
             Filters
           </H1>
           <Button
             padding='6px 16px 6px 16px'
-            cursor='pointer'
             bgColor='#90ee90'
             color='#000'
             border='none'
             margin='0'
             borderRadius='4px'
             onClick={this.props.handleResetFilters}
+            disabled={this.props.isClearButtonDisable}
           >
             Clear
           </Button>
         </Div>
 
-        <Div>
+        <Div xsWidth='60%' xsMargin='0 auto' smWidth='auto'>
           <P
             margin='0 auto'
             borderBottom='1px solid #dddddd'
@@ -40,6 +41,7 @@ class Filter extends Component {
             padding='0 0 6px 0'
             justifyContent='center'
             width='60%'
+            smWidth='auto'
           >
             Launch Year
           </P>
@@ -54,6 +56,8 @@ class Filter extends Component {
                         color='#000'
                         border='none'
                         margin='7px'
+                        xsMargin='10px 20px'
+                        smMargin='7px'
                         borderRadius='4px'
                         onClick={(event) => {
                           this.props.handleFilter(
@@ -74,7 +78,7 @@ class Filter extends Component {
               : null}
           </Div>
         </Div>
-        <Div margin='20px 0 0 0'>
+        <Div margin='20px 0 0 0' xsWidth='60%' xsMargin='20px auto 20px auto'>
           <P
             margin='0 auto'
             borderBottom='1px solid #dddddd'
@@ -82,6 +86,7 @@ class Filter extends Component {
             padding='0 0 6px 0'
             justifyContent='center'
             width='70%'
+            smWidth='auto'
           >
             Successful Launch
           </P>
@@ -95,9 +100,10 @@ class Filter extends Component {
                         cursor='pointer'
                         color='#000'
                         border='none'
+                        xsMargin='10px 20px'
+                        smMargin='7px'
                         margin='7px'
                         borderRadius='4px'
-                   
                         onClick={(event) => {
                           this.props.handleFilter(
                             event,
@@ -107,8 +113,9 @@ class Filter extends Component {
                           );
                           this.props.selectedLaunchSuccess(item.id);
                         }}
-                        selected={this.props.selectedLaunchSuccessValue === item.id}
-
+                        selected={
+                          this.props.selectedLaunchSuccessValue === item.id
+                        }
                       >
                         {item.displayName}
                       </Button>
@@ -118,7 +125,7 @@ class Filter extends Component {
               : null}
           </Div>
         </Div>
-        <Div margin='20px 0 0 0'>
+        <Div margin='20px 0 0 0' xsWidth='60%' xsMargin='20px auto 20px auto'>
           <P
             margin='0 auto'
             borderBottom='1px solid #dddddd'
@@ -126,6 +133,7 @@ class Filter extends Component {
             padding='0 0 6px 0'
             justifyContent='center'
             width='70%'
+            smWidth='auto'
           >
             Successful Landing
           </P>
@@ -140,6 +148,8 @@ class Filter extends Component {
                         color='#000'
                         border='none'
                         margin='7px'
+                        xsMargin='10px 20px'
+                        smMargin='7px'
                         borderRadius='4px'
                         selected={
                           this.props.selectedLandedSuccessValue === item.id
@@ -148,7 +158,7 @@ class Filter extends Component {
                           this.props.handleFilter(
                             event,
                             item.value,
-                            'launch_landed',
+                            'land_success',
                             item.id
                           );
                           this.props.selectedLandedSuccess(item.id);

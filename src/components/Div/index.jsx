@@ -13,8 +13,12 @@ export const Div = styled.div`
   @media only screen and ${device.xs} {
     display: ${(props) => (props.xsDisplay ? props.xsDisplay : '')};
     width: ${(props) => (props.xsWidth ? props.xsWidth : 'auto')};
+    padding: ${(props) => (props.xsPadding ? props.xsPadding : '')};
+    margin: ${(props) => (props.xsMargin ? props.xsMargin : '')};
+    flex: ${(props) => (props.xsFlex ? props.xsFlex : '')};
   }
   @media only screen and ${device.sm} {
+    margin: ${(props) => (props.smMargin ? props.smMargin : '')};
     display: ${(props) => (props.smDisplay ? props.smDisplay : '')};
     width: ${(props) => (props.smWidth ? props.smWidth : 'auto')};
   }
