@@ -4,6 +4,8 @@ export const H1 = styled.h1`
   color: ${(props) => (props.color ? props.color : '')};
   margin: ${(props) => (props.margin ? props.margin : '')};
   font-size: ${(props) => (props.fontSize ? props.fontSize : '')};
+  flex: ${(props) => (props.flex ? props.flex : '')};
+
 
   @media only screen and ${device.xs} {
     font-size: ${(props) => (props.xsFontSize ? props.xsFontSize : '')};

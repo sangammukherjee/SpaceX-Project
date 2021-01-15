@@ -14,9 +14,24 @@ class Filter extends Component {
         bgColor='#ffffff'
         lgMargin='0 20px 0 10px'
       >
-        <H1 margin='0' xsFontSize='15px'>
-          Filters
-        </H1>
+        <Div display='flex' margin='0 0 10px 0'>
+          <H1 margin='0' xsFontSize='15px' flex='1'>
+            Filters
+          </H1>
+          <Button
+            padding='6px 16px 6px 16px'
+            cursor='pointer'
+            bgColor='#90ee90'
+            color='#000'
+            border='none'
+            margin='0'
+            borderRadius='4px'
+            onClick={this.props.handleResetFilters}
+          >
+            Clear
+          </Button>
+        </Div>
+
         <Div>
           <P
             margin='0 auto'
@@ -29,26 +44,33 @@ class Filter extends Component {
             Launch Year
           </P>
           <Div display='flex' flexWrap='wrap' justifyContent='center'>
-            {this.props.getUniqueLaunchYearData &&
-            this.props.getUniqueLaunchYearData.length > 0
-              ? this.props.getUniqueLaunchYearData.map((item) => {
-                  return (
-                    <Button
-                      padding='6px 16px 6px 16px'
-                      cursor='pointer'
-                      bgColor='#90ee90'
-                      color='#000'
-                      border='none'
-                      margin='7px'
-                      borderRadius='4px'
-                      onClick={(event) =>
-                        this.props.handleFilter(event, item, 'launch_year')
-                      }
-                    >
-                      {item}
-                    </Button>
-                  );
-                })
+            {this.props.filterOptionsData
+              ? this.props.filterOptionsData.launch_year_data_array.map(
+                  (item) => {
+                    return (
+                      <Button
+                        padding='6px 16px 6px 16px'
+                        cursor='pointer'
+                        color='#000'
+                        border='none'
+                        margin='7px'
+                        borderRadius='4px'
+                        onClick={(event) => {
+                          this.props.handleFilter(
+                            event,
+                            item.value,
+                            'launch_year',
+                            item.id
+                          );
+                          this.props.selectedYear(item.id);
+                        }}
+                        selected={this.props.selectedYearValue === item.id}
+                      >
+                        {item.displayName}
+                      </Button>
+                    );
+                  }
+                )
               : null}
           </Div>
         </Div>
@@ -64,26 +86,35 @@ class Filter extends Component {
             Successful Launch
           </P>
           <Div display='flex' flexWrap='wrap' justifyContent='center'>
-            {this.props.getUniqueLaunchSuccessdata &&
-            this.props.getUniqueLaunchSuccessdata.length > 0
-              ? this.props.getUniqueLaunchSuccessdata.map((item) => {
-                  return (
-                    <Button
-                      padding='6px 16px 6px 16px'
-                      cursor='pointer'
-                      bgColor='#90ee90'
-                      color='#000'
-                      border='none'
-                      margin='7px'
-                      borderRadius='4px'
-                      onClick={(event) =>
-                        this.props.handleFilter(event, item, 'launch_success')
-                      }
-                    >
-                      {item ? 'True' : 'False'}
-                    </Button>
-                  );
-                })
+            {this.props.filterOptionsData
+              ? this.props.filterOptionsData.launch_success_data_array.map(
+                  (item) => {
+                    return (
+                      <Button
+                        padding='6px 16px 6px 16px'
+                        cursor='pointer'
+                        color='#000'
+                        border='none'
+                        margin='7px'
+                        borderRadius='4px'
+                   
+                        onClick={(event) => {
+                          this.props.handleFilter(
+                            event,
+                            item.value,
+                            'launch_success',
+                            item.id
+                          );
+                          this.props.selectedLaunchSuccess(item.id);
+                        }}
+                        selected={this.props.selectedLaunchSuccessValue === item.id}
+
+                      >
+                        {item.displayName}
+                      </Button>
+                    );
+                  }
+                )
               : null}
           </Div>
         </Div>
@@ -98,6 +129,38 @@ class Filter extends Component {
           >
             Successful Landing
           </P>
+          <Div display='flex' flexWrap='wrap' justifyContent='center'>
+            {this.props.filterOptionsData
+              ? this.props.filterOptionsData.launch_landed_data_array.map(
+                  (item) => {
+                    return (
+                      <Button
+                        padding='6px 16px 6px 16px'
+                        cursor='pointer'
+                        color='#000'
+                        border='none'
+                        margin='7px'
+                        borderRadius='4px'
+                        selected={
+                          this.props.selectedLandedSuccessValue === item.id
+                        }
+                        onClick={(event) => {
+                          this.props.handleFilter(
+                            event,
+                            item.value,
+                            'launch_landed',
+                            item.id
+                          );
+                          this.props.selectedLandedSuccess(item.id);
+                        }}
+                      >
+                        {item.displayName}
+                      </Button>
+                    );
+                  }
+                )
+              : null}
+          </Div>
         </Div>
       </Div>
     );

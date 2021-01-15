@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { device } from '../../config/index';
 export const Button = styled.button`
-  background-color: ${(props) => (props.bgColor ? props.bgColor : '')};
+  background-color: ${(props) => (props.selected ? 'red' : '#90ee90')};
   display: ${(props) => (props.display ? props.display : '')};
   padding: ${(props) => (props.padding ? props.padding : '')};
   margin: ${(props) => (props.margin ? props.margin : '')};

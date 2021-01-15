@@ -8,23 +8,17 @@ export default function* rootSaga() {
 }
 
 function* fetchDataSaga(action) {
-  yield put(fetchingData());
-
   let url = 'https://api.spacexdata.com/v3/launches?limit=100';
-  let filteredKeys =
-    action.filterdata !== undefined &&
-    action.filterdata !== null &&
-    action.filterData &&
-    Object.keys(action.filterdata).length > 0 &&
-    Object.keys(action.filterdata);
+  let filteredKeys = [];
+  filteredKeys = Object.keys(action.filterData);
 
   filteredKeys &&
+    filteredKeys.length > 0 &&
     filteredKeys.forEach((key) => {
-      if (action.filterData[key]) {
-        url = `${url}&${key}=${action.filterData[key]}`;
-      }
+      url = `${url}&${key}=${action.filterData[key]}`;
     });
-  console.log(url, action.filterData);
+
+  yield put(fetchingData());
 
   try {
     const response = yield call(axios.get, url);

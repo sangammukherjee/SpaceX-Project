@@ -5,14 +5,19 @@ import { Div } from '../../components/Div';
 import Header from '../Header';
 import Filter from '../Filter';
 import DetailsView from '../DetailsView';
-import { initFetchGetData } from '../store/actions';
-
+import {
+  selectedLandedSuccessAction,
+  initFetchGetData,
+  selectedYearAction,
+  selectedLaunchSuccessAction,
+} from '../store/actions';
+import { filterOptionsData } from './config/index';
 class Main extends Component {
   state = {
     filterData: {},
   };
   componentDidMount() {
-    this.props.getData();
+    this.props.getData({});
   }
   handleFilter = (event, item, filterType) => {
     let { filterData } = this.state;
@@ -23,28 +28,32 @@ class Main extends Component {
     }));
     this.props.getData(updateFilterData);
   };
+  handleResetFilters = () => {
+    this.setState({
+      filterData: {},
+    });
+    this.props.getData({});
+    this.props.selectedYear('');
+    this.props.selectedLaunchSuccess('');
+    this.props.selectedLandedSuccess('');
+  };
   render() {
-    console.log(this.state.filterData);
-
-    let getUniqueLaunchYearData = this.props.fetchedData &&
-      this.props.fetchedData.length > 0 && [
-        ...new Set(
-          this.props.fetchedData.map((item) => parseInt(item.launch_year))
-        ),
-      ];
-    let getUniqueLaunchSuccessdata = this.props.fetchedData &&
-      this.props.fetchedData.length > 0 && [
-        ...new Set(this.props.fetchedData.map((item) => item.launch_success)),
-      ];
+    console.log(this.props.selectedLandedSuccessValue);
 
     return (
       <Div bgColor='#eeeeee' padding='10px'>
         <Header />
         <Div lgDisplay='flex' smDisplay='flex'>
           <Filter
-            getUniqueLaunchYearData={getUniqueLaunchYearData}
-            getUniqueLaunchSuccessdata={getUniqueLaunchSuccessdata}
+            filterOptionsData={filterOptionsData}
             handleFilter={this.handleFilter}
+            handleResetFilters={this.handleResetFilters}
+            selectedYear={this.props.selectedYear}
+            selectedYearValue={this.props.selectedYearValue}
+            selectedLaunchSuccess={this.props.selectedLaunchSuccess}
+            selectedLaunchSuccessValue={this.props.selectedLaunchSuccessValue}
+            selectedLandedSuccess={this.props.selectedLandedSuccess}
+            selectedLandedSuccessValue={this.props.selectedLandedSuccessValue}
           />
           <DetailsView
             fetchedData={this.props.fetchedData}
@@ -59,11 +68,24 @@ class Main extends Component {
 const mapStateToProps = (state) => ({
   isDataFetching: state.isDataFetching,
   fetchedData: state.fetchedData,
+  selectedYearValue: state.selectedYear,
+  selectedLaunchSuccessValue: state.selectedLaunchSuccess,
+
+  selectedLandedSuccessValue: state.selectedLandedSuccess,
 });
 const mapDispatchToProps = (dispatch) => {
   return {
     getData: (filterData) => {
       dispatch(initFetchGetData(filterData));
+    },
+    selectedYear: (id) => {
+      dispatch(selectedYearAction(id));
+    },
+    selectedLaunchSuccess: (id) => {
+      dispatch(selectedLaunchSuccessAction(id));
+    },
+    selectedLandedSuccess: (id) => {
+      dispatch(selectedLandedSuccessAction(id));
     },
   };
 };
