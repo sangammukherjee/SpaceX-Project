@@ -9,7 +9,6 @@ import {
 } from './constants';
 
 export const initFetchGetData = (filterData) => {
-  console.log(filterData);
 
   return {
     type: INIT_FETCH_GET_DATA,

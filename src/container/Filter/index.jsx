@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Button } from '../../components/button';
 import { Div } from '../../components/Div';
 import { H1 } from '../../components/H1';
@@ -48,9 +48,10 @@ class Filter extends Component {
           <Div display='flex' flexWrap='wrap' justifyContent='center'>
             {this.props.filterOptionsData
               ? this.props.filterOptionsData.launch_year_data_array.map(
-                  (item) => {
+                  (item, i) => {
                     return (
                       <Button
+                        key={i}
                         padding='6px 16px 6px 16px'
                         cursor='pointer'
                         color='#000'
@@ -93,9 +94,10 @@ class Filter extends Component {
           <Div display='flex' flexWrap='wrap' justifyContent='center'>
             {this.props.filterOptionsData
               ? this.props.filterOptionsData.launch_success_data_array.map(
-                  (item) => {
+                  (item, i) => {
                     return (
                       <Button
+                        key={i}
                         padding='6px 16px 6px 16px'
                         cursor='pointer'
                         color='#000'
@@ -140,10 +142,11 @@ class Filter extends Component {
           <Div display='flex' flexWrap='wrap' justifyContent='center'>
             {this.props.filterOptionsData
               ? this.props.filterOptionsData.launch_landed_data_array.map(
-                  (item) => {
+                  (item, i) => {
                     return (
                       <Button
                         padding='6px 16px 6px 16px'
+                        key={i}
                         cursor='pointer'
                         color='#000'
                         border='none'

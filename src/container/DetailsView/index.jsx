@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Div } from '../../components/Div';
 import { Image } from '../../components/image';
 import { H1 } from '../../components/H1';
@@ -14,9 +14,10 @@ class DetailsView extends Component {
         {this.props.isDataFetching ? (
           <Loader />
         ) : this.props.fetchedData && this.props.fetchedData.length > 0 ? (
-          this.props.fetchedData.map((item) => {
+          this.props.fetchedData.map((item, i) => {
             return (
               <Div
+                key={i}
                 bgColor='#fff'
                 borderRadius='6px'
                 padding='21px'
@@ -47,7 +48,11 @@ class DetailsView extends Component {
                   </P>
                   {item.mission_id && item.mission_id.length > 0
                     ? item.mission_id.map((ID) => {
-                        return <Li color='#1a7290'>{ID}</Li>;
+                        return (
+                          <Li color='#1a7290' key={ID}>
+                            {ID}
+                          </Li>
+                        );
                       })
                     : "No ID's Found"}
                 </Div>

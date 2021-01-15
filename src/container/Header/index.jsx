@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { H1 } from '../../components/H1';
 
 class Header extends Component {
