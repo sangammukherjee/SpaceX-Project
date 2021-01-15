@@ -57,7 +57,7 @@ class Filter extends Component {
                         color='#000'
                         border='none'
                         margin='7px'
-                        xsMargin='10px 20px'
+                        xsMargin='10px 14px'
                         smMargin='7px'
                         borderRadius='4px'
                         onClick={(event) => {
@@ -102,7 +102,7 @@ class Filter extends Component {
                         cursor='pointer'
                         color='#000'
                         border='none'
-                        xsMargin='10px 20px'
+                        xsMargin='10px 14px'
                         smMargin='7px'
                         margin='7px'
                         borderRadius='4px'
@@ -151,7 +151,7 @@ class Filter extends Component {
                         color='#000'
                         border='none'
                         margin='7px'
-                        xsMargin='10px 20px'
+                        xsMargin='10px 14px'
                         smMargin='7px'
                         borderRadius='4px'
                         selected={
