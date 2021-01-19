@@ -45,9 +45,21 @@ class Main extends Component {
   render() {
     let isClearButtonDisable = !this.handleiIsClearButtonDisable();
     return (
-      <Div bgColor='#eeeeee' padding='10px'>
+      <Div
+        bgColor='#eeeeee'
+        padding='10px'
+        xsWidth='100%'
+        smWidth='100%'
+        lmWidth='100%'
+      >
         <Header />
-        <Div lgDisplay='flex' smDisplay='flex'>
+        <Div
+          deskDisplay='flex'
+          lapDisplay='flex'
+          tabDisplay='flex'
+          lapWidth='100%'
+          tabWidth='100%'
+        >
           <Filter
             filterOptionsData={filterOptionsData}
             handleFilter={this.handleFilter}

@@ -14,15 +14,33 @@ export const P = styled.p`
   border-bottom: ${(props) => (props.borderBottom ? props.borderBottom : '')};
   align-items: ${(props) => (props.alignItems ? props.alignItems : '')};
 
-  @media only screen and ${device.xs} {
-    font-size: ${(props) => (props.xsFontSize ? props.xsFontSize : '')};
-  }
-  @media only screen and ${device.sm} {
-    font-size: ${(props) => (props.smFontSize ? props.smFontSize : '')};
-    width: ${(props) => (props.smWidth ? props.smWidth : '')};
+  @media (min-width: 1281px) {
+    font-size: ${(props) => (props.deskFontSize ? props.deskFontSize : '')};
 
+    
   }
-  @media only screen and ${device.lg} {
-    font-size: ${(props) => (props.lgFontSize ? props.lgFontSize : '')};
+  @media (min-width: 1025px) and (max-width: 1280px) {
+  
+    font-size: ${(props) => (props.lapFontSize ? props.lapFontSize : '')};
+
+    
+  }
+  @media (min-width: 768px) and (max-width: 1024px) {
+  
+    font-size: ${(props) => (props.tabFontSize ? props.tabFontSize : '')};
+
+    
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+  
+    font-size: ${(props) => (props.lmFontSize ? props.lmFontSize : '')};
+
+    
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+  
+    font-size: ${(props) => (props.smFontSize ? props.smFontSize : '')};
+
+    
   }
 `;
